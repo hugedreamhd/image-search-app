@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app/widget/image_item_widget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -37,7 +38,7 @@ class MainScreen extends StatelessWidget {
                 child: GridView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Text('111');
+                    return ImageItemWidget();
                   },
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2),
