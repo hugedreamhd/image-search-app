@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_search_app/data/model/image_item.dart';
+import 'package:image_search_app/data_source//model/image_item.dart';
 import 'package:image_search_app/repository/image_item_repository.dart';
 import 'package:image_search_app/widget/image_item_widget.dart';
 
