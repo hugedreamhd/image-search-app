@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app/data/model/image_item.dart';
 
 class ImageItemWidget extends StatelessWidget {
-  const ImageItemWidget({super.key});
+  final ImageItem imageItem;
+
+  const ImageItemWidget({
+    required this.imageItem,
+  });
+
+
+
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(//자식위젯을 둥근 모서리로 자르는데 사용
-      borderRadius: BorderRadius.circular(20.0), // 코너의 각도 조절
+      borderRadius: BorderRadius.circular(20.0), // 코너의 둥근 각도 조절
       child: Image.network(
-        'https://cdn.pixabay.com/photo/2018/01/05/16/24/rose-3063284_150.jpg',
+        imageItem.imageUrl,//이미지 경로
         fit: BoxFit.cover,
       ),
     );
   }
+
 }
