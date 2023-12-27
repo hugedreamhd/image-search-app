@@ -6,7 +6,7 @@ class ImageItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.network(
-      'https://pixabay.com/photos/rose-flower-petal-floral-noble-3063284',
+      'https://pixabay.com/photos/rose-flower-petal-floral-noble-3063284/',
       fit: BoxFit.cover,
     );
   }
