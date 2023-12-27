@@ -30,6 +30,7 @@ class MainScreen extends StatelessWidget {
                     ),
                   ),
                   hintText: '입력하세요',
+                  suffixIcon: Icon(Icons.search),
                 ),
               ),
               Expanded(
