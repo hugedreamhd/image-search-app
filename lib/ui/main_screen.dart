@@ -15,6 +15,7 @@ class MainScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                   //필드코너를 약간 각지게 한다
                   borderSide: BorderSide(
+                    width: 2,
                     color: Colors.black,// 외곽선 컬러 설정
                   ),
                 ),
