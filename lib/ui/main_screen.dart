@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
                     //필드코너를 약간 각지게 한다
                     borderSide: BorderSide(
                       width: 2,
-                      color: Colors.black, // 외곽선 컬러 설정
+                      color: Color(0xFF4FB6B2), // 외곽선 컬러 설정
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -30,7 +30,7 @@ class MainScreen extends StatelessWidget {
                     ),
                   ),
                   hintText: '입력하세요',
-                  suffixIcon: Icon(Icons.search),
+                  suffixIcon: Icon(Icons.search, color: Color(0xFF4FB6B2),),
                 ),
               ),
               Expanded(
