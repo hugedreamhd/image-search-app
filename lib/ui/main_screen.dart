@@ -15,12 +15,19 @@ class _MainScreenState extends State<MainScreen> {
 
   final repository = MockImageItemRepository();
 
-  var imageItems = [];
+  List<ImageItem> imageItems = [];
+  bool isLoading = true;
 
   Future<void> searchImage(String query) async {
+    setState(() {
+      isLoading = true;
+    });
+
     imageItems = await repository.getImageItems(query);
     //강제 UI 업데이트
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -28,7 +35,6 @@ class _MainScreenState extends State<MainScreen> {
     searchTextEditingController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -62,29 +68,33 @@ class _MainScreenState extends State<MainScreen> {
                     icon: Icon(
                       Icons.search,
                       color: Color(0xFF4FB6B2),
-                    ), onPressed: () {
-                    searchImage(searchTextEditingController.text);
-                  },
+                    ),
+                    onPressed: () {
+                      searchImage(searchTextEditingController.text);
+                    },
                   ),
                 ),
               ),
               SizedBox(height: 24),
-              Expanded(
-                child: GridView.builder(
-                  itemCount: imageItems.length,
-                  itemBuilder: (context, index) {
-                    final imageItem = imageItems[index];
-                    return ImageItemWidget(
-                      imageItem: imageItem,
-                    );
-                  },
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 32,
-                    mainAxisSpacing: 32,
-                  ),
-                ),
-              ),
+              isLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : Expanded(
+                      child: GridView.builder(
+                        itemCount: imageItems.length,
+                        itemBuilder: (context, index) {
+                          final imageItem = imageItems[index];
+                          return ImageItemWidget(
+                            imageItem: imageItem,
+                          );
+                        },
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 32,
+                          mainAxisSpacing: 32,
+                        ),
+                      ),
+                    ),
             ],
           ),
         ),
