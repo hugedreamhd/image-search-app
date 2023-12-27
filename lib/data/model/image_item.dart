@@ -21,7 +21,7 @@ class ImageItem {
 
   @override
   String toString() {
-    return 'ImageItem{' + ' imageUrl: $imageUrl,' + ' tags: $tags,' + '}';
+    return 'ImageItem{ imageUrl: $imageUrl, tags: $tags,}';
   }
 
   ImageItem copyWith({
@@ -34,14 +34,14 @@ class ImageItem {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
-      'imageUrl': this.imageUrl,
-      'tags': this.tags,
+      'imageUrl': imageUrl,
+      'tags': tags,
     };
   }
 
-  factory ImageItem.fromMap(Map<String, dynamic> map) {
+  factory ImageItem.fromJson(Map<String, dynamic> map) {
     return ImageItem(
       imageUrl: map['imageUrl'] as String,
       tags: map['tags'] as String,
