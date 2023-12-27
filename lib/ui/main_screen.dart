@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:image_search_app/data/model/image_item.dart';
+import 'package:image_search_app/repository/image_item_repository.dart';
 import 'package:image_search_app/widget/image_item_widget.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final repository = ImageItemRepository();
+
+  var imageItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +52,9 @@ class MainScreen extends StatelessWidget {
               SizedBox(height: 24),
               Expanded(
                 child: GridView.builder(
-                  itemCount: 10,
+                  itemCount: imageItems.length,
                   itemBuilder: (context, index) {
-                    final imageItem = ImageItem(
-                        imageUrl:
-                            'https://pixabay.com/get/g1357bc6f7f554e4946deb4518e2e365c78bd80f9dd4a97c9c6655e55ca0560974b63c3c242ab6e20fc8f03d0d5a8b238c3765fa5fc4d5e443ffe57194b5a50c7_640.jpg',
-                        tags: 'rose');
+                    final imageItem = imageItems[index];
                     return ImageItemWidget(
                       imageItem: imageItem,
                     );
