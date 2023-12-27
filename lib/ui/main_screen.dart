@@ -19,7 +19,7 @@ class MainScreen extends StatelessWidget {
                     color: Colors.black,// 외곽선 컬러 설정
                   ),
                 ),
-                labelText: '입력하세요',
+                hintText: '입력하세요',
               ),
             ),
             Expanded(
