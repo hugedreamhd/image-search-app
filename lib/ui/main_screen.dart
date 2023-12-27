@@ -31,7 +31,10 @@ class MainScreen extends StatelessWidget {
                     ),
                   ),
                   hintText: '입력하세요',
-                  suffixIcon: Icon(Icons.search, color: Color(0xFF4FB6B2),),
+                  suffixIcon: Icon(
+                    Icons.search,
+                    color: Color(0xFF4FB6B2),
+                  ),
                 ),
               ),
               Expanded(
@@ -41,7 +44,11 @@ class MainScreen extends StatelessWidget {
                     return ImageItemWidget();
                   },
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
+                    crossAxisCount: 2,
+                    childAspectRatio: 16 / 9,
+                    crossAxisSpacing: 32,
+                    mainAxisSpacing: 32,
+                  ),
                 ),
               ),
             ],
