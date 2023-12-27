@@ -15,6 +15,7 @@ class MainScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Text('111');
                 },
+
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
               ),
