@@ -11,14 +11,15 @@ class MainScreen extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    //필드코너를 약간 각지게 한다
-                    borderSide: BorderSide(
-                      color: Color(0xFF4B6B2),
-                    ), // 외곽선 컬러 설정
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                  //필드코너를 약간 각지게 한다
+                  borderSide: BorderSide(
+                    color: Colors.black,// 외곽선 컬러 설정
                   ),
-                  labelText: '입력하세요'),
+                ),
+                labelText: '입력하세요',
+              ),
             ),
             Expanded(
               child: GridView.builder(
