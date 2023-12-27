@@ -48,9 +48,13 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
                   hintText: '입력하세요',
-                  suffixIcon: Icon(
-                    Icons.search,
-                    color: Color(0xFF4FB6B2),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Color(0xFF4FB6B2),
+                    ), onPressed: () {
+                      searchImage('꽃');
+                  },
                   ),
                 ),
               ),
