@@ -4,7 +4,6 @@ import 'package:image_search_app/repository/image_item_repository.dart';
 import 'package:image_search_app/widget/image_item_widget.dart';
 
 class MainScreen extends StatefulWidget {
-
   const MainScreen({super.key});
 
   @override
@@ -15,6 +14,12 @@ class _MainScreenState extends State<MainScreen> {
   final repository = ImageItemRepository();
 
   var imageItems = [];
+
+  Future<void> searchImage(String query) async {
+      imageItems = await repository.getImageItems(query);
+    //강제 UI 업데이트
+      setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
