@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app/data/model/image_item.dart';
 import 'package:image_search_app/widget/image_item_widget.dart';
 
 class MainScreen extends StatelessWidget {
@@ -42,7 +43,13 @@ class MainScreen extends StatelessWidget {
                 child: GridView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return ImageItemWidget();
+                    final imageItem = ImageItem(
+                        imageUrl:
+                            'https://pixabay.com/get/g1357bc6f7f554e4946deb4518e2e365c78bd80f9dd4a97c9c6655e55ca0560974b63c3c242ab6e20fc8f03d0d5a8b238c3765fa5fc4d5e443ffe57194b5a50c7_640.jpg',
+                        tags: 'rose');
+                    return ImageItemWidget(
+                      imageItem: imageItem,
+                    );
                   },
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
