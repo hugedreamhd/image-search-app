@@ -9,14 +9,15 @@ class MainScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            TextField(),
-            GridView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Text('111');
-              },
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
+            Expanded(
+              child: GridView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Text('111');
+                },
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+              ),
             ),
           ],
         ),
