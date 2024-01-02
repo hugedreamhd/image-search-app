@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:image_search_app/data_source//model/image_item.dart';
+import 'package:image_search_app/data_source/model/image_item.dart';
 import 'package:image_search_app/repository/image_item_repository.dart';
-import 'package:image_search_app/widget/image_item_widget.dart';
+import 'package:image_search_app/ui/main_view_model.dart';
+import 'package:image_search_app/ui/widget/image_item_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,22 +14,22 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final searchTextEditingController = TextEditingController();
 
-  final repository = MockImageItemRepository();
-
-  List<ImageItem> imageItems = [];
-  bool isLoading = true;
-
-  Future<void> searchImage(String query) async {
-    setState(() {
-      isLoading = true;
-    });
-
-    imageItems = await repository.getImageItems(query);
-    //강제 UI 업데이트
-    setState(() {
-      isLoading = false;
-    });
-  }
+  final viewModel = MainViewModel(); //Mock데이터 대신
+  //
+  // List<ImageItem> imageItems = [];
+  // bool isLoading = true;
+  //
+  // Future<void> searchImage(String query) async {
+  //   setState(() {
+  //     isLoading = true;
+  //   });
+  //
+  //   imageItems = await repository.getImageItems(query);
+  //   //강제 UI 업데이트
+  //   setState(() {
+  //     isLoading = false;
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -69,20 +70,29 @@ class _MainScreenState extends State<MainScreen> {
                       Icons.search,
                       color: Color(0xFF4FB6B2),
                     ),
-                    onPressed: () {
-                      searchImage(searchTextEditingController.text);
+                    onPressed: () async {
+                      setState(() {
+                        viewModel.isLoading = true;
+                      });
+
+                      await viewModel
+                          .searchImage(searchTextEditingController.text);
+
+                      setState(() {
+                        viewModel.isLoading = false;
+                      });
                     },
                   ),
                 ),
               ),
               SizedBox(height: 24),
-              isLoading
+              viewModel.isLoading
                   ? Center(child: CircularProgressIndicator())
                   : Expanded(
                       child: GridView.builder(
-                        itemCount: imageItems.length,
+                        itemCount: viewModel.imageItems.length,
                         itemBuilder: (context, index) {
-                          final imageItem = imageItems[index];
+                          final imageItem = viewModel.imageItems[index];
                           return ImageItemWidget(
                             imageItem: imageItem,
                           );
